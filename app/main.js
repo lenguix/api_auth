@@ -99,6 +99,7 @@ const usersPage = () => {
     loadInitialTemplate()
     addFormListener()
     getUsers()
+    logoutOption()
 }
 
 const loadRegisterTemplate = () => {
