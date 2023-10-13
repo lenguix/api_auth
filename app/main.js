@@ -87,7 +87,7 @@ const addFormListener = () => {
             alert(responseData);
         } else {
             console.log(responseData)
-            alert("Usuario agregado con èxito")
+            alert("Usuario agregado exitosamente")
         }
 
         userForm.reset()
