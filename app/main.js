@@ -104,19 +104,17 @@ const usersPage = () => {
 
 const loadRegisterTemplate = () => {
     const template = `
-    <h1>Register</h1>
-    <form id="register-form">
+    <form id="register-form" class="box">
+        <h1>Register</h1>
         <div>
-            <label for="">Correo</label>
-            <input type="text" name="email">
+            <input type="text" name="email" placeholder="Email">
         </div>
         <div>
-            <label for="">Contraseña</label>
-            <input type="text" name="password">
+            <input type="text" name="password" placeholder="Password">
         </div>
         <button type="submit">Enviar</button>
+        <a href="#" id="login">Iniciar sesiòn</a>
     </form>
-    <a href="#" id="login">Iniciar sesiòn</a>
     <div id="error-register"></div>
     `
     const body = document.getElementsByTagName('body')[0]
@@ -175,20 +173,18 @@ const checkLogin = () => {
 
 const loadLoginTemplate = () => {
     const template = `
-    <h1>Login</h1>
-    <form id="login-form">
+    <form id="login-form" class="box">
+        <div id="error"></div>
+        <h1>Login</h1>
         <div>
-            <label for="">Correo</label>
-            <input type="text" name="email">
+            <input type="text" name="email" placeholder="Email">
         </div>
         <div>
-            <label for="">Contraseña</label>
-            <input type="text" name="password">
+            <input type="text" name="password" placeholder="Password">
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit" id="btn-login">Enviar</button>
+        <a href="#" id="register">Registrarse</a>
     </form>
-    <a href="#" id="register">Registrarse</a>
-    <div id="error"></div>
     `
     const body = document.getElementsByTagName('body')[0]
     body.innerHTML = template
@@ -213,6 +209,10 @@ const addLoginListener = () => {
         if (response.status >= 300) {
             const errorNode = document.getElementById('error')
             errorNode.innerHTML = responseData
+             setTimeout(()=>{
+                errorNode.innerHTML = ""
+              },3000)
+
         } else {
             console.log(responseData)
             localStorage.setItem('jwt', `Bearer ${responseData}`)
