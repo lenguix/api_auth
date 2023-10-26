@@ -1,5 +1,8 @@
+let Online = ""
+
 const loadInitialTemplate = () => {
     const template = `
+    <p>Conectado como: ${Online} </p>
     <h1>Usuarios</h1>
     <form id="user-form">
         <div>
@@ -196,6 +199,9 @@ const addLoginListener = () => {
         e.preventDefault()
         const formData = new FormData(loginForm)
         const data = Object.fromEntries(formData.entries())
+
+        Online = data.email
+        console.log(data.email)
 
         const response = await fetch('/login', {
             method: 'POST',
